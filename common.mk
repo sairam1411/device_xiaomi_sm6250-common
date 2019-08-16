@@ -424,3 +424,10 @@ PRODUCT_BOOT_JARS += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+# XiaomiParts
+PRODUCT_PACKAGES += \
+    XiaomiParts \
+    init.xiaomiparts.rc \
+    init.xiaomiparts.sh
+

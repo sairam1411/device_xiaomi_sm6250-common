@@ -1,3 +1,7 @@
 # Allow system_server to set camera_prop
 get_prop(system_server, vendor_camera_prop)
 get_prop(system_server, camera_prop)
+
+# KCAL
+allow system_server kcal_dev:file rw_file_perms;
+allow system_server kcal_dev:dir r_dir_perms;
