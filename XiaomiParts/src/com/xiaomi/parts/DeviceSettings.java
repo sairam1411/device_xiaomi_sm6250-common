@@ -138,8 +138,9 @@ public class DeviceSettings extends PreferenceFragment implements
 
         if (FileUtils.fileWritable(USB_FASTCHARGE_PATH)) {
             mUSBFastcharge = (SecureSettingSwitchPreference) findPreference(PREF_USB_FASTCHARGE);
-            mUSBFastcharge.setChecked(FileUtils.getFileValueAsBoolean(USB_FASTCHARGE_PATH, true));
-            mUSBFastcharge.setOnPreferenceChangeListener(this);
+            mUSBFastcharge.setEnabled(USBFastcharge.isSupported());
+            mUSBFastcharge.setChecked(USBFastcharge.isCurrentlyEnabled(this.getContext()));
+            mUSBFastcharge.setOnPreferenceChangeListener(new USBFastcharge(getContext()));
         } else {
             getPreferenceScreen().removePreference(findPreference(CATEGORY_USB_FASTCHARGE));
         }
@@ -178,10 +179,6 @@ public class DeviceSettings extends PreferenceFragment implements
                     getContext().startService(new Intent(getContext(), DiracService.class));
                     DiracService.sDiracUtils.setLevel(String.valueOf(value));
                 }
-                break;
-
-            case PREF_USB_FASTCHARGE:
-                FileUtils.setValue(USB_FASTCHARGE_PATH, (boolean) value);
                 break;
 
             case PREF_KEY_FPS_INFO:
