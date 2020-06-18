@@ -36,3 +36,6 @@
 
 # Sys Files (wakeup)
 /sys/devices/virtual/diag/diag/wakeup[0-99]+(/.*)? u:object_r:sysfs_wakeup:s0
+
+# Touchboost
+/sys/module/msm_performance/parameters/touchboost		            u:object_r:sysfs_touchboost:s0
