@@ -69,4 +69,8 @@
         <item>restart_bootloader</item>
         <item>restart_fastboot</item>
     </string-array>
+
+    <!-- Whether device has smaller dot/u/u notch -->
+    <bool name="config_haveDotNotch">true</bool>
+
 </resources>
