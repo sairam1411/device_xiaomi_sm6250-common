@@ -62,6 +62,10 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String PREF_USB_FASTCHARGE = "usb_charge";
     public static final String USB_FASTCHARGE_PATH = "/sys/kernel/fast_charge/force_fast_charge";
 
+    public static final String CATEGORY_FASTCHARGE = "fastcharge";
+    public static final String PREF_FASTCHARGE = "fast_charge";
+    public static final String FASTCHARGE_PATH = "/sys/class/power_supply/bms/fastcharge_mode";
+
     public static final String PREF_KEY_FPS_INFO = "fps_info";
 
     private static final String PREF_CLEAR_SPEAKER = "clear_speaker_settings";
@@ -83,6 +87,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private SecureSettingListPreference mHeadsetType;
     private SecureSettingListPreference mPreset;
     private SecureSettingSwitchPreference mUSBFastcharge;
+    private SecureSettingSwitchPreference mFastcharge;
     private SecureSettingSwitchPreference mTouchboost;
     private SwitchPreference mSelinuxMode;
     private SwitchPreference mSelinuxPersistence;
@@ -168,6 +173,16 @@ public class DeviceSettings extends PreferenceFragment implements
         } else {
             getPreferenceScreen().removePreference(findPreference(CATEGORY_USB_FASTCHARGE));
         }
+
+        if (FileUtils.fileWritable(FASTCHARGE_PATH)) {
+            mFastcharge = (SecureSettingSwitchPreference) findPreference(PREF_FASTCHARGE);
+            mFastcharge.setEnabled(Fastcharge.isSupported());
+            mFastcharge.setChecked(Fastcharge.isCurrentlyEnabled(this.getContext()));
+            mFastcharge.setOnPreferenceChangeListener(new Fastcharge(getContext()));
+        }
+//          else {
+//            getPreferenceScreen().removePreference(findPreference(CATEGORY_FASTCHARGE));
+//        }
 
         SwitchPreference fpsInfo = (SwitchPreference) findPreference(PREF_KEY_FPS_INFO);
         fpsInfo.setChecked(prefs.getBoolean(PREF_KEY_FPS_INFO, false));

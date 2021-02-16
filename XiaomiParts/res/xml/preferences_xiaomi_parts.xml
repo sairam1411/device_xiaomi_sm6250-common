@@ -140,6 +140,18 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="fastcharge"
+        android:title="@string/fastcharge_category" >
+
+    <com.xiaomi.parts.preferences.SecureSettingSwitchPreference
+            android:key="fast_charge"
+            android:defaultValue="true"
+            android:title="@string/fastcharge_title"
+            android:summary="@string/fastcharge_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="speaker"
         android:title="@string/speaker_category">
 

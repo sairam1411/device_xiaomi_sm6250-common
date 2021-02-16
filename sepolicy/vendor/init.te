@@ -1,3 +1,6 @@
+# Fastcharge
+allow init sysfs_fcharge:file { write open };
+
 # SELinux
 allow init su:process { noatsecure  rlimitinh  siginh  transition };
 

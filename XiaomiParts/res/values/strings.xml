@@ -115,6 +115,11 @@
     <string name="preset_obsanity">Obsanity</string>
     <string name="preset_obsanity_ips">Obsanity IPS</string>
 
+    <!-- Fastcharge -->
+    <string name="fastcharge_category">Fastcharge</string>
+    <string name="fastcharge_title">Enable/Disable Fastcharge</string>
+    <string name="fastcharge_summary">Disable to reduce the heat produced while charging or to extend the lifespan of the battery</string>
+
     <!-- USB fastcharge -->
     <string name="usb_fastcharge_category">USB fastcharge</string>
     <string name="usb_fastcharge_title">Enable/Disable USB fastcharge</string>
