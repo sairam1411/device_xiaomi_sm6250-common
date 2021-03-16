@@ -1,0 +1,2 @@
+set_prop(thermal-engine, thermal_prop);
+allow thermal-engine vendor_data_file:dir rw_file_perms;
